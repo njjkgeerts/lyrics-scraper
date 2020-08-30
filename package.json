@@ -1,0 +1,24 @@
+{
+  "name": "lyrics-scraper",
+  "version": "1.0.0",
+  "description": "Lyrics scraper",
+  "main": "index.js",
+  "author": "Nick Geerts",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "lodash": "^4.17.20",
+    "lokijs": "^1.5.11",
+    "puppeteer": "^5.2.1"
+  },
+  "scripts": {
+    "add-artist": "node commands/add-artist.js",
+    "artists": "node commands/artists.js",
+    "completed": "node commands/completed.js",
+    "export": "node commands/export.js",
+    "process": "node commands/process.js",
+    "queue": "node commands/queue.js",
+    "songs": "node commands/songs.js"
+  }
+}

@@ -1,0 +1,18 @@
+# Node.js
+/.env
+/node_modules
+/dist
+/.dist
+/yarn-error.log
+/log/*.log
+/files/*
+
+# Temp
+/tmp
+
+# macOS
+.DS_Store
+/.vscode
+
+# LokiJS
+/loki.db
