@@ -4,13 +4,13 @@ Tool for scraping lyrics from a certain website.
 
 ## Commands:
 
-- yarn add-artist <url>
-- yarn artists
-- yarn completed
-- yarn export [artist]
-- yarn process [limit]
-- yarn queue
-- yarn songs
+- `yarn add-artist <url>`
+- `yarn artists`
+- `yarn completed`
+- `yarn export [artist]`
+- `yarn process [limit]`
+- `yarn queue`
+- `yarn songs`
 
 ## Usage
 
