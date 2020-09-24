@@ -5,7 +5,9 @@ async function main() {
   const db = await initDb()
   const songs = db.getCollection('songs')
   const completedSongs = songs.find({ lyrics: { $ne: undefined } })
-  const titles = completedSongs.map((song) => `${upperFirst(song.artist)} - ${song.title}`)
+  const titles = completedSongs
+    .map((song) => `${upperFirst(song.artist)} - ${song.title}`)
+    .join('\n')
 
   console.log(titles)
   process.exit()

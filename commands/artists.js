@@ -4,7 +4,7 @@ import uniq from 'lodash/uniq.js'
 async function main() {
   const db = await initDb()
   const songs = db.getCollection('songs').find()
-  const artists = uniq(songs.map((song) => song.artist))
+  const artists = uniq(songs.map((song) => song.artist)).join('\n')
 
   console.log(artists)
   process.exit()
