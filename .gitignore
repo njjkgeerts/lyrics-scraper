@@ -16,3 +16,6 @@
 
 # LokiJS
 /loki.db
+
+# Export
+/export
