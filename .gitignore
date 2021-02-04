@@ -14,8 +14,8 @@
 .DS_Store
 /.vscode
 
-# LokiJS
-/loki.db
+# Lowdb
+/db.json
 
 # Export
 /export

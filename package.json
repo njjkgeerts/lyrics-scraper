@@ -9,8 +9,8 @@
   "type": "module",
   "dependencies": {
     "lodash": "^4.17.20",
-    "lokijs": "^1.5.11",
-    "puppeteer": "^5.2.1"
+    "lowdb": "^1.0.0",
+    "puppeteer": "^7.0.1"
   },
   "scripts": {
     "add-artist": "node commands/add-artist.js",

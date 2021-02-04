@@ -5,21 +5,21 @@ import { sleep } from '../lib/sleep.js'
 async function processSong(song) {
   console.log(`Scraping ${song.url}`)
   const { title, lyrics } = await scrapeSongLyrics(song.url)
-  song.title = title
-  song.lyrics = lyrics
-  return song
+  return { title, lyrics }
 }
 
 async function main() {
   const limit = process.argv[2] || -1
-  const db = await initDb()
-  const songs = db.getCollection('songs')
-  const queuedSongs = songs.find({ lyrics: undefined })
+  const db = initDb()
+  const queuedSongs = db
+    .get('songs')
+    .filter((song) => !song.lyrics)
+    .value()
   let count = 0
 
   for (let song of queuedSongs) {
-    song = await processSong(song)
-    songs.update(song)
+    const { title, lyrics } = await processSong(song)
+    db.get('songs').find({ url: song.url }).assign({ title, lyrics }).write()
     count += 1
 
     if (limit === -1 || count < limit) {
@@ -29,8 +29,7 @@ async function main() {
     }
   }
 
-  await db.saveAsync()
-  process.exit()
+  process.exit(0)
 }
 
 main()

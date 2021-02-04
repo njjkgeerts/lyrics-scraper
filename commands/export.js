@@ -8,19 +8,25 @@ function songOutput(song) {
 
 async function main() {
   const artist = process.argv[2]
-  const db = await initDb()
-  const songs = db.getCollection('songs')
+  const db = initDb()
   let completedSongs
 
   if (artist) {
-    completedSongs = songs.find({ artist, lyrics: { $ne: undefined } })
+    completedSongs = db
+      .get('songs')
+      .filter((song) => song.lyrics)
+      .filter({ artist })
+      .value()
   } else {
-    completedSongs = songs.find({ lyrics: { $ne: undefined } })
+    completedSongs = db
+      .get('songs')
+      .filter((song) => song.lyrics)
+      .value()
   }
   const output = completedSongs.map((song) => songOutput(song)).join('')
 
   console.log(output)
-  process.exit()
+  process.exit(0)
 }
 
 main()

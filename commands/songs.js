@@ -1,7 +1,7 @@
 import { initDb } from '../lib/db.js'
 import upperFirst from 'lodash/upperFirst.js'
 
-function title(song) {
+function buildTitle(song) {
   if (song.title) {
     return `${upperFirst(song.artist)} - ${song.title}`
   } else {
@@ -10,15 +10,15 @@ function title(song) {
 }
 
 async function main() {
-  const db = await initDb()
-  const songs = db.getCollection('songs')
-  const titles = songs
-    .find()
-    .map((song) => title(song))
-    .join('\n')
+  const db = initDb()
+  const songs = db.get('songs').value()
+  const titles = songs.map((song) => buildTitle(song))
 
-  console.log(titles)
-  process.exit()
+  console.log('Songs:')
+  for (const title of titles) {
+    console.log(title)
+  }
+  process.exit(0)
 }
 
 main()

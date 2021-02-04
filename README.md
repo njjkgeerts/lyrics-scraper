@@ -1,6 +1,6 @@
 # Lyrics Scraper
 
-Tool for scraping lyrics from a certain website.
+Tool for scraping lyrics from a certain well-known lyrics website.
 
 ## Commands:
 
@@ -23,5 +23,5 @@ Run `yarn export` to export the lyrics to the standard output.
 ## Stack
 
 - Node.js 13+
-- LokiJS for JSON document file storage
+- Lowdb for JSON document file storage
 - Puppeteer for scraping
